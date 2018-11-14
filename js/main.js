@@ -20,7 +20,7 @@ const setScreenByIndex = (index) => {
 const prevScreen = () => setScreenByIndex(currentScreenIndex - 1);
 const nextScreen = () => setScreenByIndex(currentScreenIndex + 1);
 
-const handleKeyboardNavigation = () => {
+const addKeyboardPressListener = () => {
   document.addEventListener(`keydown`, (event) => {
     const keyCode = event.key;
 
@@ -63,8 +63,7 @@ const appendNavNode = () => {
 };
 
 const handleArrowNavigation = () => {
-  const prevArrow = document.querySelectorAll(`.arrows__btn`)[0];
-  const nextArrow = document.querySelectorAll(`.arrows__btn`)[1];
+  const [prevArrow, nextArrow] = document.querySelectorAll(`.arrows__btn`);
 
   prevArrow.addEventListener(`click`, () => prevScreen());
   nextArrow.addEventListener(`click`, () => nextScreen());
@@ -77,6 +76,6 @@ const addArrowNavigation = () => {
 
 setScreenByIndex(currentScreenIndex);
 
-handleKeyboardNavigation();
+addKeyboardPressListener();
 
 addArrowNavigation();
