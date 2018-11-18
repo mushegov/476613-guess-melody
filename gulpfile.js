@@ -38,12 +38,12 @@ gulp.task(`style`, () => {
 });
 
 gulp.task(`scripts`, () => {
-  return gulp.src(`js/main.js`)
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(rollup({}, `iife`))
-    .pipe(sourcemaps.write(``))
-    .pipe(gulp.dest(`build/js`));
+  return gulp.src(`js/**/*.js`).
+    pipe(plumber()).
+    pipe(sourcemaps.init()).
+    pipe(rollup({}, `iife`)).
+    pipe(sourcemaps.write()).
+    pipe(gulp.dest(`build/js/`));
 });
 
 gulp.task(`imagemin`, [`copy`], () => {
