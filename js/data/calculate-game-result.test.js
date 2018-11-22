@@ -1,31 +1,109 @@
 import {assert} from 'chai';
 
+const mockAnswersShouldReturn9Points = [
+  {isTrue: true, time: 5},
+  {isTrue: true, time: 10},
+  {isTrue: true, time: 15},
+  {isTrue: true, time: 20},
+  {isTrue: true, time: 25},
+  {isTrue: true, time: 30},
+  {isTrue: true, time: 35},
+  {isTrue: true, time: 40},
+  {isTrue: false, time: 45},
+  {isTrue: false, time: 50},
+];
+
+const mockAnswersShouldReturn10Points = [
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 40},
+];
+
+const mockAnswersShouldReturn17Points = [
+  {isTrue: true, time: 5},
+  {isTrue: true, time: 10},
+  {isTrue: true, time: 15},
+  {isTrue: true, time: 20},
+  {isTrue: true, time: 5},
+  {isTrue: true, time: 30},
+  {isTrue: true, time: 35},
+  {isTrue: true, time: 40},
+  {isTrue: true, time: 5},
+  {isTrue: true, time: 5},
+];
+
+const mockShouldReturnError1 = [];
+
+const mockShouldReturnError2 = [
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+];
+
 /**
  * Подсчёта набранных баллов игрока
  * @param {Array} answers Ответы игрока
- * @param {Number} livesLeft Количество оставшихя жизней
- * @return {Number} Количество набранных очков
+ * @return {Number} Количество набранных очков (или -1 если ошибка)
  */
-const calculateGameResult = (answers, livesLeft) => {
-  if (typeof answers !== `object` && answers.length !== 9) {
-    throw new Error(`Answers array should consist of exact 10 items`);
+const calculateGameResult = (answers) => {
+  if (typeof answers !== `object` || answers.length < 10) {
+    return -1;
   }
 
-  if (typeof livesLeft !== `number`) {
-    throw new Error(`livesLeft should be number`);
-  }
+  let totalPoints = 0;
+  let livesLeft = 3;
 
-  return 1;
+  answers.forEach((item) => {
+    if (item.isTrue) {
+      if (item.time < 30) {
+        totalPoints = totalPoints + 2;
+      } else {
+        totalPoints++;
+      }
+    } else {
+      livesLeft--;
+      totalPoints = totalPoints - 2;
+    }
+
+    if (livesLeft === 0) {
+      return -1;
+    }
+
+    return true;
+  });
+
+  return totalPoints;
 };
 
-describe(`Calculate Game Result: Valid Data: answers`, () => {
+describe(`Calculate Game Results`, () => {
 
-  it(`Answers array should consist of exact 10 items`, () => {
-    assert.throws(() => calculateGameResult([0], null));
-    assert.throws(() => calculateGameResult([0, 1, 2, 3, 4, 5, 6, 7, 8], null));
-    assert.throws(() => calculateGameResult([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], null));
+  it(`Success Answers`, () => {
+    assert.equal(9, calculateGameResult(mockAnswersShouldReturn9Points));
+    assert.equal(10, calculateGameResult(mockAnswersShouldReturn10Points));
+    assert.equal(17, calculateGameResult(mockAnswersShouldReturn17Points));
+  });
 
-    assert.doesNotThrow(() => calculateGameResult([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 1));
+  it(`Error Answers`, () => {
+    assert.equal(-1, calculateGameResult(mockShouldReturnError1));
+    assert.equal(-1, calculateGameResult(mockShouldReturnError2));
+  });
+
+  it(`Invalid Answers`, () => {
+    assert.equal(-1, calculateGameResult(123));
+    assert.equal(-1, calculateGameResult(`answers`));
   });
 
 });
