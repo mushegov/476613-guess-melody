@@ -86,7 +86,7 @@ const calculateGameResult = (answers) => {
   return totalPoints;
 };
 
-describe(`Calculate Game Results`, () => {
+describe(`Calculate Game Result`, () => {
 
   it(`Success Answers`, () => {
     assert.equal(9, calculateGameResult(mockAnswersShouldReturn9Points));
