@@ -59,14 +59,14 @@ const mockShouldReturnError2 = [
  * @return {Number} Количество набранных очков (или -1 если ошибка)
  */
 const calculateGameResult = (answers) => {
-  if (typeof answers !== `object` || answers.length < 10) {
+  if (!(answers instanceof Array) || answers.length < 10) {
     return -1;
   }
 
   let totalPoints = 0;
   let livesLeft = 3;
 
-  answers.forEach((item) => {
+  for (let item of answers) {
     if (item.isTrue) {
       if (item.time < 30) {
         totalPoints = totalPoints + 2;
@@ -81,9 +81,7 @@ const calculateGameResult = (answers) => {
     if (livesLeft === 0) {
       return -1;
     }
-
-    return true;
-  });
+  }
 
   return totalPoints;
 };
