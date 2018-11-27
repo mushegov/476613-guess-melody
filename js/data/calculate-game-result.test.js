@@ -53,6 +53,7 @@ const mockShouldReturnError2 = [
   {},
 ];
 
+
 /**
  * Подсчёта набранных баллов игрока
  * @param {Array} answers Ответы игрока
@@ -85,6 +86,7 @@ const calculateGameResult = (answers) => {
 
   return totalPoints;
 };
+
 
 describe(`Calculate Game Result`, () => {
 

@@ -28,6 +28,12 @@ const mockPlayerResultNoLivesLeft = {
 const mockGlobalResults = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 
+/**
+ * Возвращает результат игры в текстовом виде
+ * @param {Array} globalResults Результаты других игроков, берутся из базы
+ * @param {Object} playerResults Результаты текущей игры
+ * @return {String} Количество набранных очков (или -1 если ошибка)
+ */
 const getGameResultMessage = (globalResults, playerResults) => {
   if (getType(globalResults) !== `array`) {
     throw new Error(`globalResults is not an Array`);
@@ -63,6 +69,7 @@ const getGameResultMessage = (globalResults, playerResults) => {
 
   return result;
 };
+
 
 describe(`Get Game Result Message`, () => {
 
