@@ -1,4 +1,5 @@
 import {assert} from 'chai';
+import {getType} from '../utils';
 
 const mockAnswersShouldReturn9Points = [
   {isTrue: true, time: 5},
@@ -60,7 +61,7 @@ const mockShouldReturnError2 = [
  * @return {Number} Количество набранных очков (или -1 если ошибка)
  */
 const calculateGameResult = (answers) => {
-  if (!(answers instanceof Array) || answers.length < 10) {
+  if (getType(answers) !== `array` || answers.length < 10) {
     return -1;
   }
 
