@@ -60,7 +60,7 @@ const mockShouldReturnError2 = [
  * @param {Array} answers Ответы игрока
  * @return {Number} Количество набранных очков (или -1 если ошибка)
  */
-const calculateGameResult = (answers) => {
+const geteGameResult = (answers) => {
   if (getType(answers) !== `array` || answers.length < 10) {
     return -1;
   }
@@ -89,22 +89,22 @@ const calculateGameResult = (answers) => {
 };
 
 
-describe(`Calculate Game Result`, () => {
+describe(`Get Game Result`, () => {
 
   it(`Success Answers`, () => {
-    assert.equal(9, calculateGameResult(mockAnswersShouldReturn9Points));
-    assert.equal(10, calculateGameResult(mockAnswersShouldReturn10Points));
-    assert.equal(17, calculateGameResult(mockAnswersShouldReturn17Points));
+    assert.equal(9, geteGameResult(mockAnswersShouldReturn9Points));
+    assert.equal(10, geteGameResult(mockAnswersShouldReturn10Points));
+    assert.equal(17, geteGameResult(mockAnswersShouldReturn17Points));
   });
 
   it(`Error Answers`, () => {
-    assert.equal(-1, calculateGameResult(mockShouldReturnError1));
-    assert.equal(-1, calculateGameResult(mockShouldReturnError2));
+    assert.equal(-1, geteGameResult(mockShouldReturnError1));
+    assert.equal(-1, geteGameResult(mockShouldReturnError2));
   });
 
   it(`Invalid Answers`, () => {
-    assert.equal(-1, calculateGameResult(123));
-    assert.equal(-1, calculateGameResult(`answers`));
+    assert.equal(-1, geteGameResult(123));
+    assert.equal(-1, geteGameResult(`answers`));
   });
 
 });
