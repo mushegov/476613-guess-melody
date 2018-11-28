@@ -13,7 +13,7 @@ const loseLives = (initialLives = 3, livesToLoose = 1) => {
 
   let livesAmount = initialLives;
 
-  livesAmount = livesAmount - livesToLoose;
+  livesAmount -= livesToLoose;
 
   return livesAmount < 0 ? 0 : livesAmount;
 };
