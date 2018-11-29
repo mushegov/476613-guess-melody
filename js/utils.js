@@ -28,4 +28,13 @@ const renderScreen = (screenNode) => {
   main.append(screenNode);
 };
 
-export {getElementFromTemplate, renderScreen};
+/**
+ * Возвращает тип переменной
+ * @param {*} val
+ * @return {String} Тип переменной
+ */
+const getType = (val) => {
+  return ({}).toString.call(val).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+};
+
+export {getElementFromTemplate, renderScreen, getType};
