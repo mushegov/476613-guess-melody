@@ -1,6 +1,6 @@
 import {getElementFromTemplate, renderScreen} from '../utils.js';
-import {screen as nextScreen, addEventListeners as gameArtistAddEventListeners} from '../screens/game-artist.js';
-import {screen as welcomeScreen, handleStartPlayButtonClick} from '../screens/welcome.js';
+import {screen as nextScreen, addEventListeners as gameArtistAddEventListeners} from './game-artist.js';
+import {screen as welcomeScreen, handleStartPlayButtonClick} from './welcome.js';
 
 const template = `
   <header class="game__header">

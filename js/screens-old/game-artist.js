@@ -1,8 +1,8 @@
 import {getElementFromTemplate, renderScreen} from '../utils.js';
-import {screen as failTimeScreen, handleReplayButtonClick as failTimeScreenHandler} from '../screens/fail-time.js';
-import {screen as failTriesScreen, handleReplayButtonClick as failTriesScreenHandler} from '../screens/fail-tries.js';
-import {screen as successScreen, handleReplayButtonClick as successScreenHandler} from '../screens/result-success.js';
-import {screen as welcomeScreen, handleStartPlayButtonClick} from '../screens/welcome.js';
+import {screen as failTimeScreen, handleReplayButtonClick as failTimeScreenHandler} from './fail-time.js';
+import {screen as failTriesScreen, handleReplayButtonClick as failTriesScreenHandler} from './fail-tries.js';
+import {screen as successScreen, handleReplayButtonClick as successScreenHandler} from './result-success.js';
+import {screen as welcomeScreen, handleStartPlayButtonClick} from './welcome.js';
 
 const template = `
   <header class="game__header">
