@@ -4,19 +4,19 @@ export default [
     genre: `Инди-рок`,
     tracks: [
       {
-        url: `url`,
+        url: `url1`,
         isValid: true,
       },
       {
-        url: `url`,
+        url: `url2`,
         isValid: true,
       },
       {
-        url: `url`,
+        url: `url3`,
         isValid: true,
       },
       {
-        url: `url`,
+        url: `url4`,
         isValid: true,
       },
     ],
