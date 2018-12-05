@@ -26,8 +26,6 @@ const renderScreen = (screenNode) => {
 
   main.innerHTML = ``;
   main.append(screenNode);
-
-  document.removeEventListener(`click`);
 };
 
 /**

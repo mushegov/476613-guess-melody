@@ -1,5 +1,6 @@
 import {getElementFromTemplate, renderScreen} from '../utils.js';
 import gameScreen from "../screens/game.js";
+import questions from '../data/questions.js';
 
 export default (data) => {
   const template = `
@@ -18,13 +19,12 @@ export default (data) => {
     <p class="welcome__text">Удачи!</p>
   `;
 
-  document.querySelector(`section.main`).addEventListener(`click`, (evt) => {
-    if (evt.target && evt.target.classList.contains(`welcome__button`)) {
-      console.log('1');
-      const screen = gameScreen();
-      renderScreen(screen);
-    }
+  const element = getElementFromTemplate(template, `welcome`);
+
+  element.addEventListener(`click`, () => {
+    const screen = gameScreen(questions);
+    renderScreen(screen);
   });
 
-  return getElementFromTemplate(template, `welcome`);
+  return element;
 };
